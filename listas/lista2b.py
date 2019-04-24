@@ -92,23 +92,28 @@ def caixa_eletronico(valor):
     '''
     notas=[1,5,10,25,50,100]
 
-    x=valor//100
-    y=valor%100
-    z=valor%10
+    if(valor>=100):
+        qtd_notas=valor//100
+        valor= valor-(qtd_notas*100)
 
+        print(notas[5],qtd_notas)
 
-    if(x>0 and y==0):
-        qtd_notas=x
-        return (100,qtd_notas)
-    elif(x>0 and y>0):
-        qtd_notas = x
-        if y in notas:
-            qtd_notas=1
-            return (100, qtd_notas),(y,qtd_notas)
-        else:
-            return 0
+    elif(valor>=50):
+        qtd_notas=1
+        valor-=50
+        print(notas[4],qtd_notas)
+    elif(valor>=25):
+        qtd_notas=1
+        valor-=25
+        print (notas[3], qtd_notas)
+    elif(valor>=10):
+
     else:
-        return 0
+
+
+
+
+
     #calculando segundo numero
 
 
