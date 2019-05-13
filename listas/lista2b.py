@@ -91,24 +91,51 @@ def caixa_eletronico(valor):
     para as menores.
     '''
     notas=[1,5,10,25,50,100]
+    i=0
+
+    if(valor==0):
+        resultado=[]
+        print(resultado)
+
 
     if(valor>=100):
         qtd_notas=valor//100
         valor= valor-(qtd_notas*100)
 
-        print(notas[5],qtd_notas)
+        resultado=[notas[5],qtd_notas]
 
-    elif(valor>=50):
+        print(resultado)
+
+    if(valor>=50):
         qtd_notas=1
         valor-=50
-        print(notas[4],qtd_notas)
-    elif(valor>=25):
+        resultado = [notas[4], qtd_notas]
+        print(resultado)
+
+    if(valor>=25):
         qtd_notas=1
         valor-=25
-        print (notas[3], qtd_notas)
-    elif(valor>=10):
+        resultado=[notas[3], qtd_notas]
+        print(resultado)
 
-    else:
+    if(valor>=10):
+        while(valor>=10):
+            i+=1
+            valor-=10
+            qtd_notas=i
+        resultado=[notas[2],qtd_notas]
+        print(resultado)
+
+    if(valor>=5):
+        qtd_notas=1
+        valor-=5
+        resultado=[notas[1],qtd_notas]
+        print(resultado)
+
+    if(valor<5 and valor>0):
+        resultado=[notas[0],valor]
+        print(resultado)
+
 
 
 
