@@ -1,11 +1,10 @@
-
 def palindrome(texto):
     '''Faça uma função que verifique se uma textro passado é palíndrome,
     isto é, se é igual quando lido de trás pra frente.'''
 
-    novotexto=texto.lower().replace(" ","").replace("!","")
+    novotexto = texto.lower().replace(" ", "").replace("!", "")
 
-    if(novotexto==novotexto[::-1]):
+    if (novotexto == novotexto[::-1]):
         return True
     else:
         return False
@@ -14,7 +13,7 @@ def palindrome(texto):
 def troca_caixa(texto):
     '''Vogais ficam em caixa alta (maiúsculas)
     Consoantes ficam em caixa baixa (minúsculas)'''
-    texto=texto.lower()
+    texto = texto.lower()
     novo_texto = ''
     for letra in texto:
         if letra in 'aeiou':
@@ -29,30 +28,31 @@ def imprime_mes_por_extenso(data):
     e imprima com o nome do mês por extenso
     '''
 
-    d,m,a = data.split('/')
-    m=int(m)
-    meses=["a", "janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"]
-    m=meses[m]
-    texto="%s de %s de %s" %(d,m,a)
+    d, m, a = data.split('/')
+    m = int(m)
+    meses = ["a", "janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho", "agosto", "setembro", "outubro",
+             "novembro", "dezembro"]
+    m = meses[m]
+    texto = "%s de %s de %s" % (d, m, a)
     return texto
-
 
 
 def encontra_caracter(texto, caracter_procurado):
     '''Receba um texto e retorne a localização da primeira vez que
     aparece o caracter especificado. Não use métodos nativos, com texto.find(), index, etc.'''
-    i=0
-    for caractere in texto:
-        i+=1
-        if caractere==caracter_procurado:
+
+    for i, caractere in enumerate(texto):
+
+        if caractere == caracter_procurado:
             return i
-        else:
-            return -1
+
+    return -1
+
 
 
 def é_sortudo(numero):
     '''um número é sortudo se ele contém o dígito 2 mas não o dígito 7.'''
-    n=str(numero)
+    n = str(numero)
     # for digito in n:
 
     if '2' in n and '7' not in n:
@@ -75,15 +75,46 @@ def numeros_sortudos(limite_inferior=1, limite_superior=100000):
 def é_azarado(numero):
     '''O último dígito não pode ser igual ao primeiro, porque isso dá azar
     '''
+    lista=[]
+    for n in numero:
+        lista.append(n)
+    # if lista[0]==lista[-1]:
+    #     return True
+    # else:
+    #     return False
+
+    return lista[0]==lista[-1]
 
 
 def soma_é_par(numero):
     '''A soma dos dígitos tem que ser par, porque isso é legal;
     '''
+    #123
+    lista=[]
+    soma=0
+    for n in numero:
+        lista.append(int(n))
+
+    for i, n in enumerate(lista):
+        soma += n
+
+    if(soma % 2 == 0):
+        return True
+    else:
+        return False
 
 
 def é_chato(numero):
     '''Não pode haver dois dígitos consecutivos idênticos, porque isso é chato.'''
+
+    anterior= numero[0]
+
+    for atual in numero[1:]:
+        if anterior == atual:
+            return True
+        anterior = atual
+    else:
+        return False
 
 
 def é_número_válido(numero):
@@ -247,13 +278,13 @@ def main():
         551595 575447 587393 600953 615233 633673 659902 678315
     '''.strip().split()
     test(ponteironuloville(telefones), 39)
-    #telefones = open('telefones.txt').read().strip().split()
-    #test(ponteironuloville(telefones), 39)
+    # telefones = open('telefones.txt').read().strip().split()
+    # test(ponteironuloville(telefones), 39)
 
 
 if __name__ == '__main__':
     main()
     print("\n%d Testes, %d Ok, %d Falhas: Nota %.1f" % (total, acertos,
-                                                        total-acertos, float(acertos*10)/total))
+                                                        total - acertos, float(acertos * 10) / total))
     if total == acertos:
         print("Parabéns, seu programa rodou sem falhas!")
