@@ -90,60 +90,18 @@ def caixa_eletronico(valor):
     Procure dar sempre o número mínimo de notas, partindo das maiores
     para as menores.
     '''
-    notas=[1,5,10,25,50,100]
-    i=0
+    if valor>600:
+        return []
 
-    if(valor==0):
-        resultado=[]
-        print(resultado)
+    saida=[]
+    notas=[100,50,25,10,5,1]
 
-
-    if(valor>=100):
-        qtd_notas=valor//100
-        valor= valor-(qtd_notas*100)
-
-        resultado=[notas[5],qtd_notas]
-
-        print(resultado)
-
-    if(valor>=50):
-        qtd_notas=1
-        valor-=50
-        resultado = [notas[4], qtd_notas]
-        print(resultado)
-
-    if(valor>=25):
-        qtd_notas=1
-        valor-=25
-        resultado=[notas[3], qtd_notas]
-        print(resultado)
-
-    if(valor>=10):
-        while(valor>=10):
-            i+=1
-            valor-=10
-            qtd_notas=i
-        resultado=[notas[2],qtd_notas]
-        print(resultado)
-
-    if(valor>=5):
-        qtd_notas=1
-        valor-=5
-        resultado=[notas[1],qtd_notas]
-        print(resultado)
-
-    if(valor<5 and valor>0):
-        resultado=[notas[0],valor]
-        print(resultado)
-
-
-
-
-
-
-    #calculando segundo numero
-
-
+    for nota in notas:
+        qtd_notas =valor//nota
+        if qtd_notas > 0:
+            saida.append((nota,qtd_notas))
+        valor =valor % nota
+    return saida
 
 
 
