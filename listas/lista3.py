@@ -119,6 +119,10 @@ def é_chato(numero):
 
 def é_número_válido(numero):
     '''Um número é válido se não é azarado, a soma é par e não é chato.'''
+    if( (é_chato(numero)==False) and soma_é_par(numero) and (é_azarado(numero)==False) ):
+        return True
+    else:
+        return False
 
 
 def ponteironuloville(telefones):
@@ -164,8 +168,14 @@ def ponteironuloville(telefones):
 
         Resposta: 39
     '''
+    contador=0
+    for numero in telefones:
+        if(é_número_válido(numero)):
+            contador+=1
+    return contador
 
 
+    print(telefones)
 # Área de testes: só mexa aqui se souber o que está fazendo!
 acertos = 0
 total = 0
