@@ -1,33 +1,57 @@
 def ondernamento_contrario(lista):
     ''' Devolve a lista invertida'''
+    return lista[::-1]
 
 
 def intercalamento_listas(lista1,lista2):
     ''' Usando 'lista1' e 'lista2', ambas do mesmo comprimento,
     crie uma nova lista composta pelo
     intercalamento entre as duas.'''
+    listanova = []
+    for x,y in zip(lista1,lista2):
+        listanova.append(x)
+        listanova.append(y)
+    return listanova
 
 def im_pares(lista):
     ''' Separe em listas os impares e pares, dos inteiros da 'lista' '''
+    pares = []
+    impares = []
+    for x in lista:
+        if(x%2 == 0):
+           pares.append(x)
+        else: 
+            impares.append(x)
+    return (pares,impares)
+
 
 def maior_menor(lista):
     ''' Calcule o maior e o menor numero da 'lista' '''
 
     numero_maior = lista[0]
-
+    numero_menor = lista[0]
     for i,atual in enumerate(lista):
         if(atual>numero_maior):
             numero_maior=atual
-    return numero_maior
-
-
-
+        else:
+            numero_menor=atual
+    return numero_maior,numero_menor
 
 
 def dar_troco(valor_a_pagar, valor_em_dinheiro):
     ''' Calcule o troco numa lista com notas de 1,2,5,10,20,50 com sua
     quantidade de notas sem considerar centavos
     ex: 1 e 10 retorna troco_notas_quantidade = [5,2] quantidade_notas = [1,2] '''
+    lista_notas = [50, 20, 10, 5, 2, 1]
+    troco = valor_em_dinheiro - valor_a_pagar
+    saida=[]
+
+    for x in lista_notas:
+        qtd_notas=troco//x
+        if qtd_notas > 0:
+            saida.append((x, qtd_notas))
+            troco = troco % x
+    return saida
 
 # Área de testes: só mexa aqui se souber o que está fazendo!
 acertos = 0
