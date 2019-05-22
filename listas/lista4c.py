@@ -52,10 +52,14 @@ def remove_ocorrencias(lista, item_procurado):
     '''Devolve uma nova lista sem as ocorrencias do item procurado.
     Não utilize find, index, in, count, replace, remove, del ou outras funções prontas da linguagem.'''
     lista_nova = []
+#     for item in lista:
+#         if item == item_procurado:
+#             pass
+#         else:
+#             lista_nova.append(item)
+#     return lista_nova
     for item in lista:
-        if item == item_procurado:
-            pass
-        else:
+        if item != item_procurado:
             lista_nova.append(item)
     return lista_nova
 
