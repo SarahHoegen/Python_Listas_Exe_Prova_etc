@@ -70,6 +70,12 @@ def numeros_sortudos(limite_inferior=1, limite_superior=100000):
     Dica: faça uma função de validação e outra que a chama e
     verifica o intervalo dado
     '''
+    contador = 0
+
+    for numero in range(limite_inferior, limite_superior+1):
+        if é_sortudo(numero):
+            contador += 1
+    return contador
 
 
 def é_azarado(numero):
