@@ -79,9 +79,20 @@ def crescimento_populacional(populacao1, populacao2, crescimento1, crescimento2)
 def Fibonacci(n):
     ''' Retorne o n-ésimo valor da série de Fibonacci
     Fibonacci = 1,1,2,3,5,8,13,...'''
-    #
-    # fibo=1
-    # while 1>
+    contador =1
+    fibovelho =1
+    fiboatual = 1
+    fibonacci = 0
+    numero = 0
+
+    while numero in range(0,n-1):
+        fibonacci = fiboatual +fibovelho
+        fibovelho = fiboatual
+        fiboatual = fibonacci
+        numero += 1
+    return fibovelho
+
+
 
 
 def fatorial(numero):
@@ -196,7 +207,19 @@ def serie_pi(n):
     ''' Calcule o valor de pi através da série
     4/1 - 4/3 + 4/5 - 4/7 + ... - 4/m, sendo informado
     o número n de iterações '''
-    
+
+    pi=4/1
+    numero = 1
+    divisor=3
+    sinal = -1
+
+    while numero in range(0,n):
+        pi += 4/divisor*sinal
+        divisor+=2
+        sinal *= -1
+        numero += 1
+
+    return round(pi,6)
 
 
 # Área de testes: só mexa aqui se souber o que está fazendo!
