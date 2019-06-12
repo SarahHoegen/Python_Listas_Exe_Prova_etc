@@ -7,16 +7,14 @@
 def quantidade_de_impares(valor_inicial, valor_final):
     ''' Determine a quantidade de números ímpares num intervalo'''
 
+    numero = valor_inicial + 1
+    contador = 0
 
-    numero=valor_inicial+1
-    contador=0
-
-    while numero>=valor_inicial and numero<valor_final:
-        if(numero%2 != 0):
+    while numero >= valor_inicial and numero < valor_final:
+        if (numero % 2 != 0):
             contador += 1
         numero += 1
     return contador
-
 
 
 def soma_dos_inteiros(valor1, valor2):
@@ -62,19 +60,18 @@ def potencia(base, expoente):
     return resultado
 
 
-
-def crescimento_populacional(populacao1, populacao2, crescimento1,crescimento2):
+def crescimento_populacional(populacao1, populacao2, crescimento1, crescimento2):
     ''' Calcule quantos anos levará para a 'população1' ultrapassar a
     'população2', baseado em suas porcentagens de crescimento.'''
 
-    anos=0
+    anos = 0
 
-    if(populacao1 < populacao2 and crescimento1 < crescimento2):
-        anos=0
+    if (populacao1 < populacao2 and crescimento1 < crescimento2):
+        anos = 0
     else:
         while (populacao1 < populacao2):
-            populacao1 += populacao1*(crescimento1/100)
-            populacao2 += populacao2*(crescimento2/100)
+            populacao1 += populacao1 * (crescimento1 / 100)
+            populacao2 += populacao2 * (crescimento2 / 100)
             anos += 1
     return anos
 
@@ -92,25 +89,49 @@ def fatorial(numero):
     O fatorial é o valor produtório dos valores menores ou iguais ao número
     ex: fatorial de 4 é 4*3*2*1 e retorna 24'''
 
-    outro = numero-1
+    outro = numero - 1
     fatorial = numero
 
     if numero == 0:
         fatorial = 1
 
     else:
-        while outro>0:
+        while outro > 0:
             fatorial *= outro
-            outro -=1
+            outro -= 1
     return fatorial
-
 
 
 def é_primo(valor):
     ''' Verifique se o 'valor' informado é primo.
     Um número primo é aquele que é divisível apenas por ele mesmo e por 1'''
-    
+    ocorrencia = 0
 
+    # if valor ==2:
+    #     return True
+    # elif valor ==0 or valor == 1:
+    #     return False
+    #
+    # if valor != 2:
+    #     if valor%2 == 0 or valor%3 ==0 or valor%5==0:
+    #         return False
+    #     else:
+    #         return True
+
+    divisor = 1
+    contador=0
+
+    if valor == 0 or valor ==1:
+        return False
+
+    while divisor in range(0, valor):
+        if valor%divisor ==0:
+            contador += 1
+        divisor += 1
+    if contador < 2:
+        return True
+    else:
+        return False
 
 
 
@@ -122,28 +143,60 @@ def quantidade_de_primos(comeco, final):
     # while(inicio>comeco and inicio<final):
     #
     #     inicio += 1
-    #
+
+    atual=comeco+1
+    contador=0
+
+    while (atual > comeco and atual < final):
+        if é_primo(atual):
+            contador += 1
+        atual += 1
+    return contador
+
 
 
 def lista_de_primos(inicio, fim):
     '''Retorne uma lista de primos entre os valores informados, incluindo
     os limites'''
+    primos=[]
+
+    atual = inicio
+    while atual>=inicio and atual <= fim:
+        if é_primo(atual):
+            primos.append(atual)
+        atual += 1
+    return primos
 
 
 def serie1(n):
     '''Dado n, calcule o valor de
     s = 1 + 1/2 + 1/3 + 1/4 + ... + 1/n '''
+    numero=2
+    s=1
+    while numero in range(0,n+1):
+        s += 1/numero
+        numero += 1
+    return round(s,2)
 
 
 def serie2(n):
     '''Dado n, calcule o valor de
     s = 1/1 + 2/3 + 3/5 + 4/7 + 5/9 + ... + n/m'''
+    dividendo=2
+    divisor=3
+    s=1
 
+    while dividendo in range(0,n+1):
+        s += dividendo/divisor
+        dividendo +=1
+        divisor +=2
+    return round(s,2)
 
 def serie_pi(n):
     ''' Calcule o valor de pi através da série
     4/1 - 4/3 + 4/5 - 4/7 + ... - 4/m, sendo informado
     o número n de iterações '''
+    
 
 
 # Área de testes: só mexa aqui se souber o que está fazendo!
@@ -268,6 +321,6 @@ def main():
 if __name__ == '__main__':
     main()
     print("\n%d Testes, %d Ok, %d Falhas: Nota %.1f" % (total, acertos,
-                                                        total-acertos, float(acertos*10)/total))
+                                                        total - acertos, float(acertos * 10) / total))
     if total == acertos:
         print("Parabéns, seu programa rodou sem falhas!")
