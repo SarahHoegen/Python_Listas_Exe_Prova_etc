@@ -213,7 +213,7 @@ def serie_pi(n):
     divisor=3
     sinal = -1
 
-    while numero in range(0,n):
+    while numero < n:
         pi += 4/divisor*sinal
         divisor+=2
         sinal *= -1
